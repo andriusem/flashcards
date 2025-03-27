@@ -1,0 +1,85 @@
+.app {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.language-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.language-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 5px 10px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.language-btn.active {
+  opacity: 1;
+  font-weight: 500;
+}
+
+.flashcard-container {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 20px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e3a8a;
+  transition: transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  transform: scale(1.1);
+}
+
+.progress-counter {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.shuffle-btn {
+  background-color: #f3f4f6;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #4b5563;
+  transition: background-color 0.2s ease;
+}
+
+.shuffle-btn:hover {
+  background-color: #e5e7eb;
+}
