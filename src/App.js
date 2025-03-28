@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import { phrasalVerbs } from './data';
 import Flashcard from './components/Flashcard';
@@ -8,17 +8,17 @@ function App() {
   const [language, setLanguage] = useState('en'); // 'en' for English, 'fr' for French
   const [cards, setCards] = useState([...phrasalVerbs]);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setCurrentIndex(prevIndex => 
       prevIndex === 0 ? cards.length - 1 : prevIndex - 1
     );
-  };
+  }, [cards.length]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setCurrentIndex(prevIndex => 
       prevIndex === cards.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, [cards.length]);
 
   const shuffleCards = () => {
     // Create a shuffled copy of the cards
@@ -41,7 +41,7 @@ function App() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [goToPrevious, goToNext]);
 
   return (
     <div className="app">
