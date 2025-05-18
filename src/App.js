@@ -1,29 +1,29 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
-import { phrasalVerbs } from './data';
-import Flashcard from './components/Flashcard';
+import './styles/gapFill.css';
+import { gapFillExercises } from './gapFillData';
+import GapFill from './components/GapFill';
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [language, setLanguage] = useState('en'); // 'en' for English, 'fr' for French
-  const [cards, setCards] = useState([...phrasalVerbs]);
+  const [exercises, setExercises] = useState([...gapFillExercises]);
 
   const goToPrevious = useCallback(() => {
     setCurrentIndex(prevIndex => 
-      prevIndex === 0 ? cards.length - 1 : prevIndex - 1
+      prevIndex === 0 ? exercises.length - 1 : prevIndex - 1
     );
-  }, [cards.length]);
+  }, [exercises.length]);
 
   const goToNext = useCallback(() => {
     setCurrentIndex(prevIndex => 
-      prevIndex === cards.length - 1 ? 0 : prevIndex + 1
+      prevIndex === exercises.length - 1 ? 0 : prevIndex + 1
     );
-  }, [cards.length]);
+  }, [exercises.length]);
 
-  const shuffleCards = () => {
-    // Create a shuffled copy of the cards
-    const shuffled = [...phrasalVerbs].sort(() => Math.random() - 0.5);
-    setCards(shuffled);
+  const shuffleExercises = () => {
+    // Create a shuffled copy of the exercises
+    const shuffled = [...gapFillExercises].sort(() => Math.random() - 0.5);
+    setExercises(shuffled);
     setCurrentIndex(0);
   };
 
@@ -45,25 +45,11 @@ function App() {
 
   return (
     <div className="app">
-      <div className="language-selector">
-        <button 
-          className={`language-btn ${language === 'en' ? 'active' : ''}`}
-          onClick={() => setLanguage('en')}
-        >
-          🇬🇧 EN
-        </button>
-        <button 
-          className={`language-btn ${language === 'fr' ? 'active' : ''}`}
-          onClick={() => setLanguage('fr')}
-        >
-          🇫🇷 FR
-        </button>
-      </div>
       
-      <div className="flashcard-container">
-        <Flashcard 
-          card={cards[currentIndex]} 
-          language={language}
+      <div className="gap-fill-wrapper">
+        <GapFill 
+          exercise={exercises[currentIndex]} 
+          onNext={goToNext}
         />
       </div>
 
@@ -72,14 +58,14 @@ function App() {
           &lt;
         </button>
         <span className="progress-counter">
-          {currentIndex + 1} of {cards.length}
+          {currentIndex + 1} of {exercises.length}
         </span>
         <button className="nav-btn next" onClick={goToNext}>
           &gt;
         </button>
       </div>
       
-      <button className="shuffle-btn" onClick={shuffleCards}>
+      <button className="shuffle-btn" onClick={shuffleExercises}>
         Shuffle
       </button>
     </div>

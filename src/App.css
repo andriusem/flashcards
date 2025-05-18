@@ -1,6 +1,6 @@
 .app {
   width: 100%;
-  max-width: 500px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   display: flex;
@@ -9,33 +9,20 @@
   min-height: 100vh;
 }
 
-.language-selector {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+.app-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.app-header h1 {
+  font-size: 1.8rem;
+  color: #1e3a8a;
+  margin: 0;
+}
+
+.gap-fill-wrapper {
   width: 100%;
-  padding: 0 20px;
-}
-
-.language-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  padding: 5px 10px;
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
-}
-
-.language-btn.active {
-  opacity: 1;
-  font-weight: 500;
-}
-
-.flashcard-container {
-  width: 100%;
-  height: 400px;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 
 .navigation {
